@@ -9,6 +9,14 @@ const REVIEWS = gql`
           title
           rating
           body
+          categories {
+            data {
+              id
+              attributes {
+                name
+              }
+            }
+          }
         }
         id
       }
@@ -20,7 +28,8 @@ export default function Homepage() {
   const { loading, error, data } = useQuery(REVIEWS);
 
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :</p>
+  if (error) return <p>Error :</p>;
+  console.log()
 
   return (
     <div>
@@ -32,6 +41,9 @@ export default function Homepage() {
           <h2>{review.attributes.title}</h2>
 
           <small>console list</small>
+          {review.attributes.category.data.map((c) => (
+            <small key={c.id}>{c.id}</small>
+          ))}
 
           <p>
             {review.attributes.body[0].children[0].text.substring(0, 200)}...
