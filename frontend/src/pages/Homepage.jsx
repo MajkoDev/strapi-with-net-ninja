@@ -29,7 +29,7 @@ export default function Homepage() {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :</p>;
-  console.log()
+  console.log();
 
   return (
     <div>
@@ -40,9 +40,8 @@ export default function Homepage() {
           <div className="rating">{review.attributes.rating}</div>
           <h2>{review.attributes.title}</h2>
 
-          <small>console list</small>
-          {review.attributes.category.data.map((c) => (
-            <small key={c.id}>{c.id}</small>
+          {review.attributes.categories.data.map((c) => (
+            <small key={c.id}>{c.attributes.name}</small>
           ))}
 
           <p>
