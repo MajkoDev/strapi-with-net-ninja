@@ -51,11 +51,9 @@ export default function Category() {
           <div className="rating">{review.attributes.rating}</div>
           <h2>{review.attributes.title}</h2>
 
-    
           {review.attributes.categories.data.map((c) => (
             <small key={c.id}>{c.attributes.name}</small>
           ))}
-
 
           <p>
             {review.attributes.body[0].children[0].text.substring(0, 200)}...
